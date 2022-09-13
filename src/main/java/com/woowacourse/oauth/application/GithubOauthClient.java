@@ -23,11 +23,13 @@ public class GithubOauthClient {
     public GithubOauthClient(@Value("${github.client.id}") final String clientId,
                              @Value("${github.client.secret}") final String clientSecret,
                              @Value("${github.url.token}") final String tokenUrl,
-                             @Value("${github.url.profile}") final String profileUrl) {
+                             @Value("${github.url.profile}") final String profileUrl,
+                             final RestTemplate restTemplate) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.tokenUrl = tokenUrl;
         this.profileUrl = profileUrl;
+        this.restTemplate = restTemplate;
     }
 
     public String requestAccessToken(String code) {
@@ -54,6 +56,6 @@ public class GithubOauthClient {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate
                 .exchange(profileUrl, HttpMethod.GET, httpEntity, GithubProfileResponse.class)
-                .getBody() ~;
+                .getBody();
     }
 }
