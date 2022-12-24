@@ -9,8 +9,9 @@ import java.util.concurrent.Executors;
 public class Ob {
 
     /**
-     * 이러한 방식의 옵저버 패턴에는 2가지의 문제가 있다. 1. Complete -> 완료의 개념이 없다. notifyObservers 메서드 밖에 없기 때문 2. Error -> 비동기적으로 구현하게 되면
-     * Error Handling이 어려워진다.
+     * 이러한 방식의 옵저버 패턴에는 2가지의 문제가 있다.
+     * 1. Complete -> 완료의 개념이 없다. notifyObservers 메서드 밖에 없기 때문이다.
+     * 2. Error -> 비동기적으로 구현하게 되면 Error Handling이 어려워진다.
      */
 
     static class IntObservable extends Observable implements Runnable {
